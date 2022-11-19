@@ -29,6 +29,33 @@
         <section class="banner">
             <h1>Coisas Emprestadas</h1>
             <h2>Bem vindo {user.name}!</h2>
+            <?php
+                const DB_NAME = 'borrower_db';
+                const DB_ADDRESS = 'locahost';
+                const DB_USER = 'root';
+                const DB_PASSWORD = 'root';
+
+                $con = mysql_connect($DB_ADDRESS, DB_USER, DB_PASSWORD);
+                if (!$con) {
+                    exit('Não foi possível conectar: ' . mysql_error());
+                }
+                if (!mysql_select_db (DB_NAME, $con)) {
+                    exit('Não foi possível selecionar a base de dados: ' . mysql_error());
+                }
+
+                $get_items_query = 'SELECT * FROM ' . DB_NAME .
+                'WHERE user.id = ' . ' $user["id"]' . ';';
+                $items = mysql_query($get_items_query, $con);
+
+                $owned_items = [
+                    ];
+
+                echo '<p>Você atualmente possuí {items.length} itens cadastrados, dos quais {items.lended.length} estão emprestados.</p>';
+
+                echo '<p>Você também está emprestando {items.lending} itens de outras pessoas.</p>';
+
+                mysql_close($con);
+            ?>
             <p>Você atualmente possuí {items.length} itens cadastrados, dos quais {items.lended.length} estão emprestados.
                 Você também está emprestando {items.lending} itens de outras pessoas.</p>
             <!-- <div class="banner-action">
@@ -58,9 +85,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="borrowd-item">
+                    <?php
+                        $items = array();
+                        foreach ($items as $item) {
+                            $name = $item['name'];
+                            $borrower = $item['borrower'];
+                            $return_date = $item['return_date'];
+
+                            echo '<tr class="borrowed-item">';
+                                echo '<td class="item-name">$name</td>';
+                                echo '<td class="borrower">$borrower</td>';
+                                echo '<td class="return-date">$return_date</td>';
+                                echo '<td class="actions">';
+                                    echo '<button class="btn return-item">Devolver</button>';
+                                echo '</td>';
+                            echo '</tr>';
+                        }
+                    ?>
+                    <tr class="borrowed-item">
                         <td class="item-name">Bicicleta</td>
-                        <td class="borrower-name">João das Neves</td>
+                        <td class="borrower">João das Neves</td>
                         <td class="return-date">01/01/2023</td>
                         <td class="actions">
                             <button class="btn return-item">Devolver</button>

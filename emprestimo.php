@@ -20,7 +20,7 @@
                 <li class=""><a href="cadastro.php">Novo Item</a></li>
                 <li class="selected"><a href="emprestimo.php">Novo Empréstimo</a></li>
                 <!-- <li class=""><a href="emprestimo">Devolver Item</a></li> -->
-                <li class=""><a href="logout">Deslogar</a></li>
+                <li class=""><button onclick="logout">Deslogar</button></li>
             </ul>
         </nav>
     </aside>
@@ -52,19 +52,31 @@
             </thead>
             <tbody>
                 <?php
-                    $items = array();
+                    $items = [
+                        [
+                            "name" => "Bicicleta",
+                            "owner" => "João",
+                            "return_date" => "10/12/2022",
+                        ],
+                        [
+                            "name" => "Play Station",
+                            "owner" => "Luis",
+                            "return_date" => "10/12/2022",
+                        ]
+                    ];
                     foreach ($items as $item) {
-                        $name = item['name'];
-                        $owner = item['owner'];
-                        $return_date = item['return_date'];
+                        $name = $item['name'];
+                        $owner = $item['owner'];
+                        $return_date = $item['return_date'];
 
-                        echo '<tr class="borrowd-item">';
-                        echo '<td class="item-name">$name</td>';
-                        echo '<td class="borrower-name">$owner</td>';
-                        echo '<td class="return-date">$return_date</td>';
-                        echo '<td class="actions">';
-                        echo '<button class="btn return-item">Emprestar</button>';
-                        echo '</td>';
+                        echo '<tr class="borrowed-item">';
+                            echo '<td class="item-name">$name</td>';
+                            echo '<td class="owner">$owner</td>';
+                            echo '<td class="return-date">$return_date</td>';
+                            echo '<td class="actions">';
+                                echo '<button class="btn borrow-item">Emprestar</button>';
+                            echo '</td>';
+                        echo '</tr>';
                     }
                 ?>
                 <tr class="borrowd-item">
