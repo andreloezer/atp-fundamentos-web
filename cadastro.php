@@ -12,18 +12,18 @@
     <!-- <header class="header" id="header">
         <button class="logout-btn" id="logout-btn">Logout</button>
     </header> -->
-    <aside>
+    <!-- <aside>
         <h2>Ações:</h2>
         <nav>
             <ul>
                 <li class=""><a href="principal.php">Itens Cadastrados</a></li>
                 <li class="selected"><a href="cadastro.php">Novo Item</a></li>
                 <li class=""><a href="emprestimo.php">Novo Empréstimo</a></li>
-                <!-- <li class=""><a href="emprestimo">Devolver Item</a></li> -->
                 <li class=""><a href="logout">Deslogar</a></li>
             </ul>
         </nav>
-    </aside>
+    </aside> -->
+    <?php include_once 'nav.php'; ?>
     <main class="main">
         <h1>Registrar Item</h1>
         <form action="item.php" method="post">
