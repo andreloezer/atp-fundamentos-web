@@ -1,3 +1,7 @@
+<?php
+    require_once('auth.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,23 +74,23 @@
                         $return_date = $item['return_date'];
 
                         echo '<tr class="borrowed-item">';
-                            echo '<td class="item-name">$name</td>';
-                            echo '<td class="owner">$owner</td>';
-                            echo '<td class="return-date">$return_date</td>';
+                            echo '<td class="item-name">' . $name . '</td>';
+                            echo '<td class="owner">' . $owner . '</td>';
+                            echo '<td class="return-date">' . $return_date . '</td>';
                             echo '<td class="actions">';
                                 echo '<button class="btn borrow-item">Emprestar</button>';
                             echo '</td>';
                         echo '</tr>';
                     }
                 ?>
-                <tr class="borrowd-item">
+                <!-- <tr class="borrowd-item">
                     <td class="item-name">Bicicleta</td>
                     <td class="borrower-name">João das Neves</td>
                     <td class="return-date">01/01/2023</td>
                     <td class="actions">
                         <button class="btn return-item">Emprestar</button>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </main>

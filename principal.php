@@ -30,31 +30,38 @@
             <h1>Coisas Emprestadas</h1>
             <h2>Bem vindo {user.name}!</h2>
             <?php
-                const DB_NAME = 'borrower_db';
-                const DB_ADDRESS = 'locahost';
-                const DB_USER = 'root';
-                const DB_PASSWORD = 'root';
+                // const DB_NAME = 'borrower_db';
+                // const DB_ADDRESS = 'locahost';
+                // const DB_USER = 'root';
+                // const DB_PASSWORD = 'root';
 
-                $con = mysql_connect($DB_ADDRESS, DB_USER, DB_PASSWORD);
-                if (!$con) {
-                    exit('Não foi possível conectar: ' . mysql_error());
-                }
-                if (!mysql_select_db (DB_NAME, $con)) {
-                    exit('Não foi possível selecionar a base de dados: ' . mysql_error());
-                }
+                // $con = mysql_connect($DB_ADDRESS, DB_USER, DB_PASSWORD);
+                // if (!$con) {
+                //     exit('Não foi possível conectar: ' . mysql_error());
+                // }
+                // if (!mysql_select_db (DB_NAME, $con)) {
+                //     exit('Não foi possível selecionar a base de dados: ' . mysql_error());
+                // }
 
                 $get_items_query = 'SELECT * FROM ' . DB_NAME .
                 'WHERE user.id = ' . ' $user["id"]' . ';';
-                $items = mysql_query($get_items_query, $con);
+                // $items = mysql_query($get_items_query, $con);
 
-                $owned_items = [
-                    ];
+                $items = query_db($get_items_query);
+
+                $own_items = [
+                    [
+                        "name" => "Bicicleta",
+                        "lending" => false,
+                        "lending_time" => 5,
+                    ]
+                ];
 
                 echo '<p>Você atualmente possuí {items.length} itens cadastrados, dos quais {items.lended.length} estão emprestados.</p>';
 
                 echo '<p>Você também está emprestando {items.lending} itens de outras pessoas.</p>';
 
-                mysql_close($con);
+                // mysql_close($con);
             ?>
             <p>Você atualmente possuí {items.length} itens cadastrados, dos quais {items.lended.length} estão emprestados.
                 Você também está emprestando {items.lending} itens de outras pessoas.</p>
