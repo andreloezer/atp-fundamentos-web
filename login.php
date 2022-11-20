@@ -9,7 +9,13 @@
 
     const SALT = '123';  // Should be an .env
 
-    $get_user_query = 'SELECT * FROM Users WHERE login = ' . sanitize($_POST["login"] . ';');  // Vulnerable to injection, should be sanitized
+    $get_user_query = [
+        "query" => 'SELECT * FROM Users WHERE login = :user_login',
+        "params" => [
+            "user_login" => $_POST["login"],
+        ],
+    ];
+
     $res = query_db($get_user_query);
 
     if ($res["password"] == crypt($_POST["password"], SALT))

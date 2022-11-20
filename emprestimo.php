@@ -78,7 +78,7 @@
                             echo '<td class="owner">' . $owner . '</td>';
                             echo '<td class="return-date">' . $return_date . '</td>';
                             echo '<td class="actions">';
-                                echo '<button class="btn borrow-item">Emprestar</button>';
+                                echo '<button onclick="" class="btn borrow-item">Emprestar</button>';
                             echo '</td>';
                         echo '</tr>';
                     }

@@ -1,28 +1,24 @@
 <?php
 
+    const DSN = 'mysql';
     const DB_NAME = 'borrower_db';
     const DB_ADDRESS = 'locahost';
     const DB_USER = 'root';
     const DB_PASSWORD = 'root';
 
     function query_db($query) {
-        $con = mysql_connect($DB_ADDRESS, DB_USER, DB_PASSWORD);
-        if (!$con) {
-            exit('Não foi possível conectar: ' . mysql_error());
+        try {
+            $connection = new PDO (DSN.':host='.DB_ADDRESS.'dbname='.DB_NAME, DB_USER, DB_PASSWORD);
+            $data = $connection->prepare($query["query"]);
+            foreach($query["params"] as $param => $value) {
+                $data->bindParam(':'.$param, $value);
+            }
+            $data->execute();
+    
+            return $data->fetch();
+        } catch(PDOException $e) {
+            echo 'Erro ao conectar: '.$e->getMessage();
         }
-        if (!mysql_select_db (DB_NAME, $con)) {
-            exit('Não foi possível selecionar a base de dados: ' . mysql_error());
-        }
-
-        $data = mysql_query($query, $con);
-
-        mysql_close($con);
-
-        return $data;
-    }
-
-    function sanitize($query) {
-        return $query;
     }
 
     function logout() {
