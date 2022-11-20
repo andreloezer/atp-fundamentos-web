@@ -6,6 +6,8 @@
     const DB_USER = 'root';
     const DB_PASSWORD = 'root';
 
+    const SALT = '123';  // Should be an .env
+
     function query_db($query) {
         try {
             $connection = new PDO (DSN.':host='.DB_ADDRESS.'dbname='.DB_NAME, DB_USER, DB_PASSWORD);
@@ -19,6 +21,10 @@
         } catch(PDOException $e) {
             echo 'Erro ao conectar: '.$e->getMessage();
         }
+    }
+
+    function hash_it($string) {
+        return crypt($string, SALT);
     }
 
     function logout() {

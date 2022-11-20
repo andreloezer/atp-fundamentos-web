@@ -1,3 +1,11 @@
+<?php
+
+function place_nav($active) {
+    return;
+}
+
+?>
+
 <aside>
     <h2>Ações:</h2>
     <nav>

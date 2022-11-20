@@ -81,6 +81,7 @@
         </section>
         <section class="borrow-items">
             <h2>Items Emprestados</h2>
+            <form id="return-item" name="return-item" method="POST" action="return_item.php"></form>
             <table class="borrowed-items-table">
                 <thead>
                     <tr>
@@ -103,6 +104,7 @@
                         foreach ($borrowed_items as $item) {
                             $name = $item['name'];
                             $owner = $item['owner'];
+                            $id = $item['id'];
                             $return_date = $item['return_date'];
 
                             echo '<tr class="borrowed-item">';
@@ -110,7 +112,7 @@
                                 echo '<td class="owner">'.$owner.'</td>';
                                 echo '<td class="return-date">'.$return_date.'</td>';
                                 echo '<td class="actions">';
-                                    echo '<button class="btn return-item">Devolver</button>';
+                                    echo '<button form="return-item" type="button" id='.$id.' name='.$id.' class="btn return-item">Devolver</button>';
                                 echo '</td>';
                             echo '</tr>';
                         }

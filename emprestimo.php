@@ -40,6 +40,7 @@
             </label>
             <button class="btn btn-invert" type="submit">Cadastrar</button>
         </form> -->
+        <form id="borrow-item" name="borrow-item" method="POST" action="borrow-item.php"></form>
         <table class="borrowed-items-table">
             <thead>
                 <tr>
@@ -83,6 +84,7 @@
                     foreach ($lend_items as $item) {
                         $name = $item['name'];
                         $owner = $item['owner'];
+                        $id = $item['id'];
                         $return_date = $item['return_date'];
 
                         echo '<tr class="borrowed-item">';
@@ -90,7 +92,7 @@
                             echo '<td class="owner">'.$owner.'</td>';
                             echo '<td class="return-date">'.$return_date.'</td>';
                             echo '<td class="actions">';
-                                echo '<button onclick="" class="btn borrow-item">Emprestar</button>';
+                                echo '<button form="borrow-item" id='.$id.' name='.$id.' class="btn borrow-item">Emprestar</button>';
                             echo '</td>';
                         echo '</tr>';
                     }
