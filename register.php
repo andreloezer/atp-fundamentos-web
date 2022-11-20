@@ -9,7 +9,7 @@
     // echo "Password: " . $_POST["password"];
 
     $register_user_query = [
-        "query" => 'INSERT (login, email, password) INTO Users VALUES :login, :email, :password',
+        "query" => 'INSERT INTO Users (login, email, password) VALUES (:login, :email, :password);',
         "params" => [
             "login" => $_POST["login"],
             "email" => $_POST["email"],
