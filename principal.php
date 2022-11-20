@@ -1,3 +1,7 @@
+<?php
+    require_once('auth.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,38 +34,41 @@
             <h1>Coisas Emprestadas</h1>
             <h2>Bem vindo {user.name}!</h2>
             <?php
-                // const DB_NAME = 'borrower_db';
-                // const DB_ADDRESS = 'locahost';
-                // const DB_USER = 'root';
-                // const DB_PASSWORD = 'root';
 
-                // $con = mysql_connect($DB_ADDRESS, DB_USER, DB_PASSWORD);
-                // if (!$con) {
-                //     exit('Não foi possível conectar: ' . mysql_error());
-                // }
-                // if (!mysql_select_db (DB_NAME, $con)) {
-                //     exit('Não foi possível selecionar a base de dados: ' . mysql_error());
-                // }
-
-                $get_items_query = 'SELECT * FROM ' . DB_NAME .
-                'WHERE user.id = ' . ' $user["id"]' . ';';
-                // $items = mysql_query($get_items_query, $con);
-
-                $items = query_db($get_items_query);
-
-                $own_items = [
-                    [
-                        "name" => "Bicicleta",
-                        "lending" => false,
-                        "lending_time" => 5,
-                    ]
+                // Items user is currently borrowing from someone else
+                $get_borrowed_items_query = [
+                    "query" => 'SELECT * FROM Items WHERE borrower_id = :user_id',
+                    "params" => [
+                        "user_id" => $_SESSION["id"],
+                    ],
                 ];
+                $borrowed_items = query_db($get_borrowed_items_query);
 
-                echo '<p>Você atualmente possuí {items.length} itens cadastrados, dos quais {items.lended.length} estão emprestados.</p>';
+                // Items owned by the user
+                $get_own_items_query = [
+                    "query" => 'SELECT * FROM Items WHERE owner_id = :user_id',
+                    "params" => [
+                        "user_id" => $_SESSION["id"],
+                    ],
+                ];
+                $own_items = query_db($get_own_items_query);
 
-                echo '<p>Você também está emprestando {items.lending} itens de outras pessoas.</p>';
+                // $own_items = [
+                //     [
+                //         "name" => "Bicicleta",
+                //         "lending" => false,
+                //         "lending_time" => 5,
+                //     ]
+                // ];
 
-                // mysql_close($con);
+                echo '<p>Você atualmente possuí '
+                    .count($own_items).
+                    ' itens cadastrados, dos quais '
+                    .count(array_filter($own_items, fn($item) => $item["borrower"], ))
+                    .' estão emprestados.</p>';
+
+                echo '<p>Você também está emprestando '.count($borrowed_items).' itens de outras pessoas.</p>';
+
             ?>
             <p>Você atualmente possuí {items.length} itens cadastrados, dos quais {items.lended.length} estão emprestados.
                 Você também está emprestando {items.lending} itens de outras pessoas.</p>
@@ -81,7 +88,7 @@
                             Nome
                         </th>
                         <th>
-                            Destinatário
+                            Proprietário
                         </th>
                         <th>
                             Data de retorno
@@ -93,30 +100,29 @@
                 </thead>
                 <tbody>
                     <?php
-                        $items = array();
-                        foreach ($items as $item) {
+                        foreach ($borrowed_items as $item) {
                             $name = $item['name'];
-                            $borrower = $item['borrower'];
+                            $owner = $item['owner'];
                             $return_date = $item['return_date'];
 
                             echo '<tr class="borrowed-item">';
-                                echo '<td class="item-name">$name</td>';
-                                echo '<td class="borrower">$borrower</td>';
-                                echo '<td class="return-date">$return_date</td>';
+                                echo '<td class="item-name">'.$name.'</td>';
+                                echo '<td class="owner">'.$owner.'</td>';
+                                echo '<td class="return-date">'.$return_date.'</td>';
                                 echo '<td class="actions">';
                                     echo '<button class="btn return-item">Devolver</button>';
                                 echo '</td>';
                             echo '</tr>';
                         }
                     ?>
-                    <tr class="borrowed-item">
+                    <!-- <tr class="borrowed-item">
                         <td class="item-name">Bicicleta</td>
                         <td class="borrower">João das Neves</td>
                         <td class="return-date">01/01/2023</td>
                         <td class="actions">
                             <button class="btn return-item">Devolver</button>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </section>

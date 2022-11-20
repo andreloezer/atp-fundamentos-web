@@ -68,15 +68,24 @@
                             "return_date" => "10/12/2022",
                         ]
                     ];
-                    foreach ($items as $item) {
+
+                    $get_lend_items_query = [
+                        "query" => 'SELECT * FROM Items WHERE owner_id = :user_id',
+                        "params" => [
+                            "user_id" => $_SESSION["id"],
+                        ],
+                    ];
+                    $lend_items = query_db($get_lend_items_query);
+
+                    foreach ($lend_items as $item) {
                         $name = $item['name'];
                         $owner = $item['owner'];
                         $return_date = $item['return_date'];
 
                         echo '<tr class="borrowed-item">';
-                            echo '<td class="item-name">' . $name . '</td>';
-                            echo '<td class="owner">' . $owner . '</td>';
-                            echo '<td class="return-date">' . $return_date . '</td>';
+                            echo '<td class="item-name">'.$name.'</td>';
+                            echo '<td class="owner">'.$owner.'</td>';
+                            echo '<td class="return-date">'.$return_date.'</td>';
                             echo '<td class="actions">';
                                 echo '<button onclick="" class="btn borrow-item">Emprestar</button>';
                             echo '</td>';
