@@ -10,17 +10,16 @@
     function query_db($query) {
         try {
             $pdo = new PDO (DSN.':host='.DB_ADDRESS.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $pdo->prepare($query["query"]);
-            foreach($query["params"] as $param => $value) {
-                echo $param . ' -> ' . $value . '<br/>';
-                // $stmt->bindParam(':'.$param, $value);
-            }
             $stmt->execute($query["params"]);
 
-            echo var_dump($stmt);
-            echo var_dump($stmt->fetch());
+            // echo var_dump($stmt);
+            // echo var_dump($stmt->fetch());
+
+            return $pdo->lastInsertId();
     
-            return $stmt->fetch();
+            // return $stmt->fetch();
         } catch(PDOException $e) {
             echo 'Erro ao conectar: '.$e->getMessage();
         }

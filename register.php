@@ -22,16 +22,14 @@
         ],
     ];
 
-    $res = query_db($register_user_query);
-
-    // echo var_dump($res);
+    $id = query_db($register_user_query);
 
     $user = [
-        "name" => $res["name"],
-        "email" => $res["email"],
-        "id" => $res["id"],
+        "name" => $name,
+        "email" => $email,
+        "id" => $id,
     ];
     $_SESSION["user"] = $user;
-    setcookie("user_id", $res["id"], time()+60*60*24);
+    setcookie("user_id", $id, time()+60*60*24);
 
 ?>
