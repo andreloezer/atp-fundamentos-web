@@ -7,6 +7,8 @@
     // echo "<br >";
     // echo "Password: " . $_POST["password"];
 
+    require __DIR__ . '/helpers.php';
+
     
 
     $get_user_query = [
@@ -17,6 +19,9 @@
     ];
 
     $res = query_db($get_user_query);
+
+    echo var_dump($res);
+    echo 'nigger';
 
     if ($res["password"] == hash_it($_POST["password"]))
 

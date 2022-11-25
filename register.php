@@ -1,4 +1,5 @@
 <?php
+    require __DIR__ . '/helpers.php';
     // echo "Dados enviados<br>";
     // var_dump($_POST);
     // echo "<br >";
@@ -8,19 +9,26 @@
     // echo "<br >";
     // echo "Password: " . $_POST["password"];
 
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $password = hash_it($_POST["password"]);
+
     $register_user_query = [
-        "query" => 'INSERT INTO Users (login, email, password) VALUES (:login, :email, :password);',
+        "query" => 'INSERT INTO users (name, email, password) VALUES (:name, :email, :password);',
         "params" => [
-            "login" => $_POST["login"],
-            "email" => $_POST["email"],
-            "password" => hash_it($_POST["password"]),
+            "name" => $name,
+            "email" => $email,
+            "password" => $password,
         ],
     ];
 
     $res = query_db($register_user_query);
 
+    // echo var_dump($res);
+
     $user = [
         "name" => $res["name"],
+        "email" => $res["email"],
         "id" => $res["id"],
     ];
     $_SESSION["user"] = $user;

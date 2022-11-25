@@ -13,8 +13,8 @@
         <h1>Registre-se</h1>
         <form action="register.php" method="post">
             <label for="">
-                <span>Login</span>
-                <input type="text" placeholder="Login" id="login" name="login">
+                <span>Nome</span>
+                <input type="text" placeholder="Nome" id="name" name="name">
             </label>
             <label>
                 <span>E-mail</span>
