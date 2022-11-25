@@ -19,16 +19,17 @@
     ];
 
     $res = query_db($get_user_query);
+    $data = $res["data"];
 
-    echo var_dump($res);
+    echo var_dump($data);
     echo 'nigger';
 
-    if ($res["password"] == hash_it($_POST["password"]))
+    if ($data["password"] == hash_it($_POST["password"]))
 
     $user = [
-        "name" => $res["name"],
-        "id" => $res["id"],
+        "name" => $data["name"],
+        "id" => $data["id"],
     ];
     $_SESSION["user"] = $user;
-    setcookie("user_id", $res["id"], time()+60*60*24);
+    setcookie("user_id", $data["id"], time()+60*60*24);
 ?>

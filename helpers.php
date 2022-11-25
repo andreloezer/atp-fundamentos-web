@@ -17,9 +17,12 @@
             // echo var_dump($stmt);
             // echo var_dump($stmt->fetch());
 
-            return $pdo->lastInsertId();
-    
-            // return $stmt->fetch();
+            $res = [
+                "id" => $pdo->lastInsertId(),
+                "data" => $stmt->fetch()
+            ];
+
+            return $res;
         } catch(PDOException $e) {
             echo 'Erro ao conectar: '.$e->getMessage();
         }

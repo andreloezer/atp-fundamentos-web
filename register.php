@@ -22,7 +22,8 @@
         ],
     ];
 
-    $id = query_db($register_user_query);
+    $res = query_db($register_user_query);
+    $id = $res["id"];
 
     $user = [
         "name" => $name,
