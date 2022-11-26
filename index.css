@@ -1,59 +1,20 @@
-form {
+.banner {
+    max-width: 50rem;
+    margin: auto;
+}
+
+.banner h1 {
+    margin: 8rem 0 4rem 0;
+}
+
+.borrow-items {
+    padding: 3rem 0 0 0;
     display: flex;
     flex-direction: column;
-    width: 30rem;
-    margin: 5rem auto;
-    padding: 5rem;
-    box-sizing: border-box;
-    border-radius: 0.6rem;
-    background-color: var(--dark);
-    color: var(--bright);
-    align-items: center;
+    justify-content: center;
 }
 
-label {
-    display: flex;
-    flex-direction: column;
-    margin: 0 0 2rem 0;
-    text-align: start;
+.borrowed-items-table thead {
     font-size: 1.5rem;
-    width: 100%;
+    height: 4rem;
 }
-
-input {
-    padding: 1rem 1.5rem;
-    font-size: 1.2rem;
-    border-radius: 0.2rem;
-    margin: 0.5rem 0;
-    border: none;
-}
-
-input:focus-visible {
-    border: none;
-}
-
-.flex {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.btn {
-    margin: 2rem 0 0 0;
-    font-size: 1.5rem;
-    font-weight: normal;
-    padding: 0.8rem 1.2rem;
-    border-radius: 0.4rem;
-    width: fit-content;
-}
-
-/* button {
-    margin: 2rem auto;
-    font-size: 1.5rem;
-    padding: 0.8rem 1.2rem;
-    border-radius: 0.4rem;
-}
-
-button:hover {
-
-} */

@@ -14,5 +14,5 @@
         ],
     ];
 
-    query_db($add_item_query);
+    $res = query_db($add_item_query);
 ?>

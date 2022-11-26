@@ -32,5 +32,5 @@
     setcookie("user_id", $data["id"], time()+60*60*24);
 
     // Redirect to the main page
-    redirect('principal.php');
+    redirect('index.php');
 ?>
