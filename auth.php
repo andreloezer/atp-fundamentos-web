@@ -1,5 +1,5 @@
 <?php
     session_start();
-    if (isset($_SESSION["user"]) == false)
+    if (isset($_SESSION["id"]) == false)
         header('location: entrar.php');
 ?>

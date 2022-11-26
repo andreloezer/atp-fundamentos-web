@@ -25,6 +25,11 @@
                 <button class="btn btn-invert" type="submit">Entrar</button>
             </div>
         </form>
+        <?php
+            if (isset($_GET["error"])) {
+                echo '<p class="error">Email ou senha inválidos</p>';
+            }
+        ?>
     </main>
 </body>
 </html>

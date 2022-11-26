@@ -14,9 +14,8 @@
         ]
     ];
     $res = query_db($check_email_query);
-    if (count($res["data"]) == 0) {
-        redirect('registrar.php');
-    }
+    if (count($res["data"]) == 0)
+        redirect('registrar.php?error');
 
     // Register the new user in the DB
     $register_user_query = [
@@ -31,15 +30,11 @@
     $res = query_db($register_user_query);
     $id = $res["id"];
 
-    // Get new user data
-    $user = [
-        "name" => $name,
-        "email" => $email,
-        "id" => $id,
-    ];
-
     // Start new user session
-    $_SESSION["user"] = $user;
+    session_start();
+    $_SESSION["id"] = $id;
+    $_SESSION["email"] = $email;
+    $_SESSION["name"] = $name;
     setcookie("user_id", $id, time()+60*60*24);
 
     // Redirect to the main page

@@ -16,19 +16,14 @@
     $data = $res["data"][0];
 
     // Check if password match
-    if (!check_it($password, $data["password"])) {
-        redirect('index.php');
-    }
-
-    // Get user data
-    $user = [
-        "name" => $data["name"],
-        "email" => $data["email"],
-        "id" => $data["id"],
-    ];
+    if (!check_it($password, $data["password"]))
+        redirect('entrar.php?error=1');
 
     // Start user session
-    $_SESSION["user"] = $user;
+    session_start();
+    $_SESSION["id"] = $data["id"];
+    $_SESSION["email"] = $data["email"];
+    $_SESSION["name"] = $data["name"];
     setcookie("user_id", $data["id"], time()+60*60*24);
 
     // Redirect to the main page

@@ -47,6 +47,14 @@ input:focus-visible {
     width: fit-content;
 }
 
+.error {
+    text-align: center;
+    font-size: 20px;
+    margin: 30px;
+    font-weight: bold;
+    color: #d9534f;
+}
+
 /* button {
     margin: 2rem auto;
     font-size: 1.5rem;

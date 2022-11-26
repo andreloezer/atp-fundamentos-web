@@ -26,6 +26,11 @@
             </label>
             <button type="submit" class="btn btn-invert">Registrar</button>
         </form>
+        <?php
+            if (isset($_GET["error"])) {
+                echo '<p class="error">Email já resgistrado</p>';
+            }
+        ?>
     </main>
     
 </body>
