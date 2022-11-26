@@ -13,8 +13,8 @@
         <h1>Autenticação</h1>
         <form action="login.php" method="post">
             <label>
-                <span>Login</span>
-                <input type="text" placeholder="Login" name="login" id="login">
+                <span>Email</span>
+                <input type="text" placeholder="Email" name="email" id="email">
             </label>
             <label>
                 <span>Senha</span>

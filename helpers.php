@@ -15,11 +15,16 @@
             $stmt->execute($query["params"]);
 
             // echo var_dump($stmt);
+            // echo 'nigga <br/>';
             // echo var_dump($stmt->fetch());
+            // echo 'nigga <br/>';
+            // echo var_dump($stmt->fetchAll());
+            // echo '<br/>';
 
             $res = [
+                "result" => true,
                 "id" => $pdo->lastInsertId(),
-                "data" => $stmt->fetch()
+                "data" => $stmt->fetchAll(),
             ];
 
             return $res;
@@ -28,12 +33,29 @@
         }
     }
 
-    function hash_it($string) {
-        return password_hash($string, HASH_ALGO);
+    function hash_it($password) {
+        return password_hash($password, HASH_ALGO);
+    }
+
+    function check_it($password, $hash) {
+        return password_verify($password, $hash);
     }
 
     function logout() {
         $_SESSION = array();
+    }
+
+    function redirect($url) {
+        header('location: ' . $url);
+    }
+
+    function log_arr($arr) {
+        echo '<br>';
+        foreach ($arr as $value) {
+            echo $value;
+            echo '<br>';
+        }
+        echo '<br>';
     }
 
 ?>
