@@ -10,24 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registar item</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="index.css" >
+    <link rel="stylesheet" href="form.css" >
 </head>
 <body>
-    <!-- <header class="header" id="header">
-        <button class="logout-btn" id="logout-btn">Logout</button>
-    </header> -->
-    <!-- <aside>
-        <h2>Ações:</h2>
-        <nav>
-            <ul>
-                <li class=""><a href="principal.php">Itens Cadastrados</a></li>
-                <li class="selected"><a href="cadastro.php">Novo Item</a></li>
-                <li class=""><a href="emprestimo.php">Novo Empréstimo</a></li>
-                <li class=""><a href="logout">Deslogar</a></li>
-            </ul>
-        </nav>
-    </aside> -->
-    <?php include_once 'nav.php'; ?>
+    <?php 
+        require __DIR__ . '/nav.php';
+        echo render_navigation('cadastro');
+    ?>
     <main class="main">
         <h1>Registrar Item</h1>
         <form action="item.php" method="POST">

@@ -13,22 +13,10 @@
     <link rel="stylesheet" href="index.css" >
 </head>
 <body>
-    <!-- <header class="header" id="header">
-        <button class="logout-btn btn" id="logout-btn">Logout</button>
-        
-    </header> -->
-    <!-- <aside>
-        <h2>Ações:</h2>
-        <nav>
-            <ul>
-                <li class="selected"><a href="principal.php">Itens Cadastrados</a></li>
-                <li class=""><a href="cadastro.php">Novo Item</a></li>
-                <li class=""><a href="emprestimo.php">Novo Empréstimo</a></li>
-                <li class=""><a href="logout">Deslogar</a></li>
-            </ul>
-        </nav>
-    </aside> -->
-    <?php include_once 'nav.php'; ?>
+    <?php 
+        require __DIR__ . '/nav.php';
+        echo render_navigation('index');
+    ?>
     <main class="main" id="main">
         <section class="banner">
             <h1>Coisas Emprestadas</h1>
@@ -81,7 +69,7 @@
         </section>
         <section class="borrow-items">
             <h2>Items Emprestados</h2>
-            <form id="return-item" name="return-item" method="POST" action="return_item.php"></form>
+            <form class="hidden" id="return-item" name="return-item" method="POST" action="return_item.php"></form>
             <table class="borrowed-items-table">
                 <thead>
                     <tr>
