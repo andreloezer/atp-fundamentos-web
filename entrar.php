@@ -14,7 +14,7 @@
         <form action="login.php" method="post">
             <label>
                 <span>Email</span>
-                <input required type="text" placeholder="Email" name="email" id="email">
+                <input required type="email" placeholder="Email" name="email" id="email">
             </label>
             <label>
                 <span>Senha</span>

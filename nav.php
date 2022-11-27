@@ -5,13 +5,13 @@
                         '<h2>Ações:</h2>'.
                         '<ul>'.
                             '<li class="'.($active == 'index' ? 'selected' : '').'">'.
-                                '<a href="index.php">Itens Cadastrados</a>'.
+                                '<a href="index.php">Empréstimos</a>'.
                             '</li>'.
                             '<li class="'.($active == 'emprestimo' ? 'selected' : '').'">'.
-                                '<a href="emprestimo.php">Novo Empréstimo</a>'.
+                                '<a href="emprestimo.php">Emprestar</a>'.
                             '</li>'.
                             '<li class="'.($active == 'perfil' ? 'selected' : '').'">'.
-                                '<a href="perfil.php">Perfil</a>'.
+                                '<a href="perfil.php">Meu Perfil</a>'.
                             '</li>'.
                             '<li class="'.($active == 'logout' ? 'selected' : '').'">'.
                                 '<a href="logout.php">Sair</a>'.
