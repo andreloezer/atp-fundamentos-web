@@ -46,7 +46,9 @@ aside {
     box-sizing: border-box;
     padding: 6rem 2rem 6rem 0;
     /* height: calc(100vh - var(--header-height)); */
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
+    width: 250px;
 }
 
 aside h2 {
@@ -54,8 +56,12 @@ aside h2 {
 }
 
 aside nav {
+    position: fixed;
+}
+
+aside ul {
     margin: 2rem 0 0 0;
-    padding: 3rem 3rem;
+    padding: 3rem 2rem;
     /* border-radius: 1rem; */
     background-color: var(--bright);
     color: var(--dark);
@@ -135,6 +141,14 @@ h1 {
     font-size: 4rem;
 }
 
+.flex {
+    display: flex;
+}
+
 form.hidden {
+    display: none;
+}
+
+.hidden {
     display: none;
 }

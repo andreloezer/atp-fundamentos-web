@@ -14,13 +14,6 @@
             $stmt = $pdo->prepare($query["query"]);
             $stmt->execute($query["params"]);
 
-            // echo var_dump($stmt);
-            // echo 'nigga <br/>';
-            // echo var_dump($stmt->fetch());
-            // echo 'nigga <br/>';
-            // echo var_dump($stmt->fetchAll());
-            // echo '<br/>';
-
             $res = [
                 "result" => true,
                 "id" => $pdo->lastInsertId(),

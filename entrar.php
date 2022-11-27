@@ -14,11 +14,11 @@
         <form action="login.php" method="post">
             <label>
                 <span>Email</span>
-                <input type="text" placeholder="Email" name="email" id="email">
+                <input required type="text" placeholder="Email" name="email" id="email">
             </label>
             <label>
                 <span>Senha</span>
-                <input type="password" placeholder="Senha" name="password" id="password">
+                <input required type="password" placeholder="Senha" name="password" id="password">
             </label>
             <div class="flex">
                 <a href="registrar.php" class="btn btn-invert">Registrar</a>

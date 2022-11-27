@@ -9,12 +9,16 @@
 
 .borrow-items {
     padding: 3rem 0 0 0;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
 }
 
 .borrowed-items-table thead {
-    font-size: 1.5rem;
+    font-size: 1rem;
     height: 4rem;
+}
+
+.borrowed-items-table th {
+    padding: 1rem;
 }

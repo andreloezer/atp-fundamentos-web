@@ -14,15 +14,15 @@
         <form action="register.php" method="post">
             <label for="">
                 <span>Nome</span>
-                <input type="text" placeholder="Nome" id="name" name="name">
+                <input required type="text" placeholder="Nome" id="name" name="name">
             </label>
             <label>
                 <span>E-mail</span>
-                <input type="email" placeholder="E-mail" name="email" id="email">
+                <input required type="email" placeholder="E-mail" name="email" id="email">
             </label>
             <label>
                 <span>Senha</span>
-                <input type="password" placeholder="Senha" name="password" id="password">
+                <input required type="password" placeholder="Senha" name="password" id="password">
             </label>
             <button type="submit" class="btn btn-invert">Registrar</button>
         </form>

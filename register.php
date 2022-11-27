@@ -14,7 +14,7 @@
         ]
     ];
     $res = query_db($check_email_query);
-    if (count($res["data"]) == 0)
+    if (count($res["data"]) == 1)
         redirect('registrar.php?error');
 
     // Register the new user in the DB
@@ -26,7 +26,6 @@
             "password" => $password,
         ],
     ];
-
     $res = query_db($register_user_query);
     $id = $res["id"];
 

@@ -8,8 +8,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registar item</title>
+    <title>Registar Empréstimo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form.css" >
 </head>
 <body>
     <?php 
@@ -17,83 +18,26 @@
         echo render_navigation('emprestimo');
     ?>
     <main class="main">
-
-    
-        <!-- <h1>Registrar Item</h1> -->
-        <!-- <form action="item.php" method="post">
-            <label for="">
-                <span>Nome do Item</span>
-                <input type="text" name="name" id="name" placeholder="Nome do Item">
+        <h1>Registrar Empréstimo</h1>
+        <form action="borrow.php" method="POST">
+            <label for="item_name">
+                <span>Item</span>
+                <input required type="text" name="item_name" id="item_name" placeholder="Nome do Item">
             </label>
-            <button class="btn btn-invert" type="submit">Cadastrar</button>
-        </form> -->
-        <form class="hidden" id="borrow-item" name="borrow-item" method="POST" action="borrow-item.php"></form>
-        <table class="borrowed-items-table">
-            <thead>
-                <tr>
-                    <th>
-                        Nome
-                    </th>
-                    <th>
-                        Proprietário
-                    </th>
-                    <th>
-                        Data de retorno
-                    </th>
-                    <th>
-                        Ações
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $items = [
-                        [
-                            "name" => "Bicicleta",
-                            "owner" => "João",
-                            "return_date" => "10/12/2022",
-                        ],
-                        [
-                            "name" => "Play Station",
-                            "owner" => "Luis",
-                            "return_date" => "10/12/2022",
-                        ]
-                    ];
-
-                    $get_lend_items_query = [
-                        "query" => 'SELECT * FROM Items WHERE owner_id = :user_id',
-                        "params" => [
-                            "user_id" => $_SESSION["id"],
-                        ],
-                    ];
-                    $lend_items = query_db($get_lend_items_query);
-
-                    foreach ($lend_items as $item) {
-                        $name = $item['name'];
-                        $owner = $item['owner'];
-                        $id = $item['id'];
-                        $return_date = $item['return_date'];
-
-                        echo '<tr class="borrowed-item">';
-                            echo '<td class="item-name">'.$name.'</td>';
-                            echo '<td class="owner">'.$owner.'</td>';
-                            echo '<td class="return-date">'.$return_date.'</td>';
-                            echo '<td class="actions">';
-                                echo '<button form="borrow-item" id='.$id.' name='.$id.' class="btn borrow-item">Emprestar</button>';
-                            echo '</td>';
-                        echo '</tr>';
-                    }
-                ?>
-                <!-- <tr class="borrowd-item">
-                    <td class="item-name">Bicicleta</td>
-                    <td class="borrower-name">João das Neves</td>
-                    <td class="return-date">01/01/2023</td>
-                    <td class="actions">
-                        <button class="btn return-item">Emprestar</button>
-                    </td>
-                </tr> -->
-            </tbody>
-        </table>
+            <label for="borrower_name">
+                <span>Comodante</span>
+                <input required type="text" name="borrower_name" id="borrower_name" placeholder="Comodante">
+            </label>
+            <label for="borrower_tel">
+                <span>Telefone de Contato</span>
+                <input required type="text" name="borrower_tel" id="borrower_tel" placeholder="(99) 9 9999-9999">
+            </label>
+            <label for="schedule_date">
+                <span>Limite de retorno</span>
+                <input type="date" name="schedule_date" id="schedule_date">
+            </label>
+            <button class="btn btn-invert" type="submit">Registrar Empréstimo</button>
+        </form>
     </main>
     
 </body>
