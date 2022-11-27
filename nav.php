@@ -13,6 +13,9 @@
                             '<li class="'.($active == 'perfil' ? 'selected' : '').'">'.
                                 '<a href="perfil.php">Meu Perfil</a>'.
                             '</li>'.
+                            '<li class="'.($active == 'senha' ? 'selected' : '').'">'.
+                                '<a href="senha.php">Alterar Senha</a>'.
+                            '</li>'.
                             '<li class="'.($active == 'logout' ? 'selected' : '').'">'.
                                 '<a href="logout.php">Sair</a>'.
                             '</li>'.

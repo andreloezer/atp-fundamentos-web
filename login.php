@@ -16,9 +16,11 @@
     $data = $res["data"][0];
 
     // Check if password match
-    if (!check_it($password, $data["password"]))
-        redirect('entrar.php?error=1');
-
+    if (!check_it($password, $data["password"])) {
+        redirect('entrar.php?error');
+        return;
+    } 
+    
     // Start user session
     session_start();
     $_SESSION["id"] = $data["id"];

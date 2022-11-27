@@ -24,7 +24,10 @@
                 <span>Senha</span>
                 <input required type="password" placeholder="Senha" name="password" id="password">
             </label>
-            <button type="submit" class="btn btn-invert">Registrar</button>
+            <div class="flex">
+                <a href="entrar.php" class="btn btn-invert">Entrar</a>
+                <button class="btn btn-invert" type="submit">Registrar</button>
+            </div>
         </form>
         <?php
             if (isset($_GET["error"])) {

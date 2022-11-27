@@ -6,7 +6,7 @@
 
     // Soft delete item
     $return_item_query = [
-        "query" => 'UPDATE Items SET return_date = :return_date WHERE id = :item_id',
+        "query" => 'UPDATE Items SET return_date = :return_date WHERE id = :item_id;',
         "params" => [
             "return_date" => $today,
             "item_id" => $item_id,

@@ -16,7 +16,7 @@
 <body>
     <?php 
         require __DIR__ . '/nav.php';
-        echo render_navigation('index');
+        echo render_navigation('perfil');
 
         $name = $_SESSION["name"];
         $email = $_SESSION["email"];
@@ -36,7 +36,7 @@
                     echo '<input required type="email" placeholder="Email" name="email" id="email" value="'.$email.'">';
                 ?>
             </label>
-            <div class="flex">
+            <div class="flex center">
                 <button class="btn btn-invert" type="submit">Salvar</button>
             </div>
         </form>
