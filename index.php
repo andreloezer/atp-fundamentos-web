@@ -25,7 +25,6 @@
             <?php  
                 echo '<h2>Bem vindo '.$_SESSION["name"].'!</h2>';
 
-                // Items user is currently borrowing from someone else
                 $get_items_query = [
                     "query" => 'SELECT * FROM Items WHERE user_id = :user_id',
                     "params" => [
@@ -36,41 +35,12 @@
 
                 $pending_items = array_filter($items, fn($item) => !$item["return_date"]);
                 $returned_items = array_filter($items, fn($item) => $item["return_date"]);
-
-                //count(array_filter($own_items, fn($item) => $item["borrower"], ))
-
-                // Items owned by the user
-                // $get_own_items_query = [
-                //     "query" => 'SELECT * FROM Items WHERE owner_id = :user_id',
-                //     "params" => [
-                //         "user_id" => $_SESSION["id"],
-                //     ],
-                // ];
-                // $own_items = query_db($get_own_items_query);
-
-                // $own_items = [
-                //     [
-                //         "name" => "Bicicleta",
-                //         "lending" => false,
-                //         "lending_time" => 5,
-                //     ]
-                // ];
-
                 echo '<p>Você atualmente possuí '
                     .count($pending_items).
                     ' itens emprestados e '
                     .count($returned_items)
                     .' já devolvidos.</p>';
-
-                // echo '<p>Você também está emprestando '.count($borrowed_items).' itens de outras pessoas.</p>';
-
             ?>
-            <!-- <div class="banner-action">
-                <h2>Cadastrar novo item</h2>
-                <a href="/item.php" class="btn" id="new-item-btn">Novo Item</a>
-                <h2>Cadastrar novo empréstimo</h2>
-                <a href="/lending.php" class="btn" id="new-item-btn">Novo Empréstimo</a>
-            </div> -->
         </section>
         <?php
             if (count($pending_items) == 0)
@@ -80,7 +50,7 @@
         ?>
             <h2>Items Emprestados</h2>
             
-            <form class="hidden" id="return-item" name="return-item" method="POST" action="return_item.php"></form>
+            <form class="" id="return-item" name="return-item" method="POST" action="return_item.php">
 
             <table class="borrowed-items-table">
                 <thead>
@@ -107,7 +77,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($items as $item) {
+                        foreach ($pending_items as $item) {
                             $id = $item['id'];
                             $name = $item['name'];
                             $borrow_date = $item['borrow_date'];
@@ -122,7 +92,8 @@
                                 echo '<td class="borrower-name">'.$borrower_name.'</td>';
                                 echo '<td class="borrower-tel">'.$borrower_tel.'</td>';
                                 echo '<td class="actions">';
-                                    echo '<button form="return-item" type="button" id='.$id.' name='.$id.' class="btn return-item">Devolver</button>';
+                                    echo '<input type="hidden" name="item_id" value="'.$id.'">';
+                                    echo '<button form="return-item" type="submit" class="btn return-item">Devolver</button>';
                                 echo '</td>';
                             echo '</tr>';
                         }

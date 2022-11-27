@@ -26,7 +26,7 @@
             "borrower_tel" => $borrower_tel,
         ],
     ];
-    $res = query_db($register_item_borrow_query);
+    query_db($register_item_borrow_query);
 
     // Redirect to the main page
     redirect('index.php');
