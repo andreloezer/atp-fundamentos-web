@@ -9,7 +9,6 @@
 
 .borrow-items {
     padding: 3rem 0 0 0;
-    /* display: flex; */
     flex-direction: column;
     justify-content: center;
 }

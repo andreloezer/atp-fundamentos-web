@@ -39,20 +39,14 @@ main {
 }
 
 aside {
-    /* float: left; */
     background-color: var(--dark);
     color: var(--bright);
     height: fit-content;
     box-sizing: border-box;
     padding: 6rem 2rem 6rem 0;
-    /* height: calc(100vh - var(--header-height)); */
     height: auto;
     min-height: 100vh;
     width: 250px;
-}
-
-aside h2 {
-    /* margin: 0 0 4rem 0; */
 }
 
 aside nav {
@@ -62,7 +56,6 @@ aside nav {
 aside ul {
     margin: 2rem 0 0 0;
     padding: 3rem 2rem;
-    /* border-radius: 1rem; */
     background-color: var(--bright);
     color: var(--dark);
 }
@@ -137,7 +130,6 @@ ul {
 }
 
 h1 {
-    /* margin-top: 8rem; */
     font-size: 3rem;
 }
 
