@@ -57,5 +57,5 @@ input:focus-visible {
     font-size: 30px;
     margin: 20px;
     font-weight: bold;
-    color: #d9534f;
+    color: var(--danger-color);
 }

@@ -21,3 +21,7 @@
 .borrowed-items-table th {
     padding: 1rem;
 }
+
+.overdue {
+    color: var(--danger-color);
+}

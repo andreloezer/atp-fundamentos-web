@@ -77,6 +77,8 @@
                 </thead>
                 <tbody>
                     <?php
+                        $today = date("Y-m-d");
+
                         foreach ($pending_items as $item) {
                             $id = $item['id'];
                             $name = $item['name'];
@@ -85,10 +87,14 @@
                             $borrower_name = $item['borrower_name'];
                             $borrower_tel = $item['borrower_tel'];
 
-                            echo '<tr class="borrowed-item">';
+                            echo '<tr class="borrowed-item'.
+                                ($schedule_date <= $today ? ' overdue' : '').'">';
                                 echo '<td class="item-name">'.$name.'</td>';
                                 echo '<td class="borrow-date">'.$borrow_date.'</td>';
-                                echo '<td class="schedule-date">'.$schedule_date.'</td>';
+
+                                echo '<td class="schedule-date">'.
+                                    ($schedule_date ? $schedule_date : 'Indeterminada').
+                                    '</td>';
                                 echo '<td class="borrower-name">'.$borrower_name.'</td>';
                                 echo '<td class="borrower-tel">'.$borrower_tel.'</td>';
                                 echo '<td class="actions">';

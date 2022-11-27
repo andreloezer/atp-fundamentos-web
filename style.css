@@ -3,6 +3,7 @@
     --bright: #ddd;
     --transition-time: 0.2s;
     --header-height: 5rem;
+    --danger-color: #d9534f;
 }
 
 body {
