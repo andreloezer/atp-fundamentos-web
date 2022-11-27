@@ -16,13 +16,7 @@
         ],
     ];
     $res = query_db($get_password_query);
-
-    echo var_dump($res);
-
     $user_password = $res["data"][0]["password"];
-    echo '<br><br>' . var_dump($user_password);
-    echo '<br><br>' . var_dump($password);
-    echo '<br><br>' . var_dump($new_password);
 
     // Check if password match
     if (!check_it($password, $user_password)) {
